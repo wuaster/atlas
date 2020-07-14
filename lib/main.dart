@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:atlas/ui/screens/chat_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -54,15 +55,12 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions = <Widget>[
     Text(
       'Index 0: Home',
       style: optionStyle,
     ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
+    ChatScreen(),
     Text(
       'Index 2: School',
       style: optionStyle,
@@ -103,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.blueAccent,
         onTap: _onItemTapped,
       ),
     );
