@@ -16,9 +16,9 @@
 		<data>
 		lILml1/Dm8FIsisqu4EM3Kg929Q=
 		</data>
-		<key>flutter_assets/NOTICES</key>
+		<key>flutter_assets/LICENSE</key>
 		<data>
-		xz48UYbcDdYZqqPAOKtzG6HC2xg=
+		hSDJKd/FB565+x8rlXgJ2LKvExw=
 		</data>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.ttf</key>
 		<data>
@@ -26,11 +26,11 @@
 		</data>
 		<key>flutter_assets/isolate_snapshot_data</key>
 		<data>
-		lAAFGboVVlMr5z8PBjMvbWQvWW0=
+		zIBm0C+IF1Uyd0Ysus7GG/2t3BY=
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		jKiPa3xcDkHDeLeX+stYKQdnX0g=
+		dn7KRzdeNgWUx+U19gGEFtYzc2Q=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>flutter_assets/vm_snapshot_data</key>
 		<data>
-		BAAg4MIK8operN8tZ+pzsHPYYk0=
+		c4lES89gGDE/pbQYZAtZSx0P7XQ=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -65,15 +65,15 @@
 			YwkPE2N7k/su9XjVFpdeoUy7GFY9DEY+G4h3aEyC1dg=
 			</data>
 		</dict>
-		<key>flutter_assets/NOTICES</key>
+		<key>flutter_assets/LICENSE</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xz48UYbcDdYZqqPAOKtzG6HC2xg=
+			hSDJKd/FB565+x8rlXgJ2LKvExw=
 			</data>
 			<key>hash2</key>
 			<data>
-			FueKayCan4OksFgLPwOe/X+7fg1Gd2vELUvtDcXclsw=
+			Ji/Zic+93lz9GG0VnjGf9gBe1tTuD/R2EvSbSeOkvP4=
 			</data>
 		</dict>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.ttf</key>
@@ -91,22 +91,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			lAAFGboVVlMr5z8PBjMvbWQvWW0=
+			zIBm0C+IF1Uyd0Ysus7GG/2t3BY=
 			</data>
 			<key>hash2</key>
 			<data>
-			dFYP+dngIHOkgGWvP+YpsxDNH+mdkM0Xj2fiavMHOCM=
+			fBGLLWoPsd6V2gnnkU1Ii6PABIH9UtqGJ5s6qgAnF9c=
 			</data>
 		</dict>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			jKiPa3xcDkHDeLeX+stYKQdnX0g=
+			dn7KRzdeNgWUx+U19gGEFtYzc2Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			dp7o8jBwybCXOcp38rHYf8Wxas+GGzPoi/fqjhUFnnE=
+			4iJNXCW9mrL6RlpeaqJeEfpN0HxHOsY4C8TqR+KHeiI=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -124,11 +124,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			BAAg4MIK8operN8tZ+pzsHPYYk0=
+			c4lES89gGDE/pbQYZAtZSx0P7XQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			ShjDGBv4QKYOydPrF0I+a7CCo4xVzAr9AMkNUeUN9lM=
+			I5M7BRnkIZ7bmTulf1uN2H/2vYEAv6BPRMrt+7Mz9lM=
 			</data>
 		</dict>
 	</dict>
