@@ -2,9 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:atlas/ui/screens/chat_screen.dart';
 import 'package:atlas/ui/screens/dashboard_screen.dart';
 import 'package:atlas/ui/screens/history_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:atlas/providers/session_provider.dart';
 
-void main() {
-  runApp(MyApp());
+import 'package:atlas/globals.dart';
+import 'package:http/http.dart' as http;
+
+void main() async {
+  var res = await http.get("$API_BASE/session");
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => Session(res.body),
+          lazy: false,
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
