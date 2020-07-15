@@ -9,8 +9,6 @@ class Chat extends StatefulWidget {
 class _ChatState extends State<Chat> {
   final ChatUser user = ChatUser(
     name: "Me",
-    firstName: "John",
-    lastName: "Doe",
     uid: "2",
   );
 
