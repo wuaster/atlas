@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:atlas/ui/screens/chat_screen.dart';
-
+import 'package:atlas/ui/screens/dashboard_screen.dart';
 void main() {
   runApp(MyApp());
 }
@@ -45,10 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static final List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+    DashboardScreen(),
     ChatScreen(),
     Text(
       'Index 2: School',
@@ -75,6 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,  
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
