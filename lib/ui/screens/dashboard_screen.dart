@@ -20,10 +20,20 @@ class DashboardScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 16),
-                          child: Text(
-                            'Money Saved',
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black.withOpacity(0.5)),
-                          ),
+                          child: Row(
+                            children: <Widget> [
+                            Text(
+                              'Money Saved',
+                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black.withOpacity(0.5)),
+                            ),
+                            Icon(
+                              Icons.attach_money,
+                              color: Colors.green,
+                              size: 24.0,
+                            ),
+                          ]
+                          )
+                          
                         ),
                         GridView.count(
                           shrinkWrap: true,
@@ -56,10 +66,19 @@ class DashboardScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 16),
-                          child: Text(
-                            'Emissions',
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black.withOpacity(0.5)),
-                          ),
+                          child: Row(
+                            children: <Widget> [
+                            Text(
+                              'Emissions',
+                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black.withOpacity(0.5)),
+                            ),
+                            Icon(
+                              Icons.local_gas_station,
+                              color: Colors.blue,
+                              size: 24.0,
+                            ),
+                          ]
+                          )
                         ),
                          GridView.count(
                           shrinkWrap: true,

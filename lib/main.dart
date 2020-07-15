@@ -12,13 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Atlas',
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xffF6F6F6),
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Atlas Home Page'),
     );
   }
 }
@@ -78,15 +78,15 @@ class _MyHomePageState extends State<MyHomePage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            title: Text('Home'),
+            title: Text('Dashboard'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat_bubble_outline),
-            title: Text('Business'),
+            title: Text('Chat'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('School'),
+            icon: Icon(Icons.map),
+            title: Text('Map'),
           ),
         ],
         currentIndex: _selectedIndex,

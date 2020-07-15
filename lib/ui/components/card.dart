@@ -27,7 +27,7 @@ class PCard extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text(front, style: TextStyle(fontSize:18)),
+                      Text(front, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                     ],
                   ),
                 ),
@@ -48,7 +48,7 @@ class PCard extends StatelessWidget {
                     children: <Widget>[
                       Padding(
                           padding: EdgeInsets.all(48),
-                          child: Text(back, style: TextStyle(fontSize:18)),
+                          child: Text(back, style: TextStyle(fontSize:16, fontWeight: FontWeight.bold )),
                         ),
                     ],
                 ),
