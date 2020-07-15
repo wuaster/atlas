@@ -62,7 +62,7 @@ class TripScreen extends StatelessWidget {
                       ),
                       stat(
                         "$distance km travelled",
-                        Icons.local_gas_station,
+                        Icons.directions,
                         Colors.amber,
                       ),
                     ],
@@ -73,7 +73,10 @@ class TripScreen extends StatelessWidget {
                       Radius.circular(10),
                     ),
                   ),
-                )
+                ),
+                Image(
+                  image: AssetImage('assets/graphics/turbines.png'),
+                ),
               ],
             ),
           )

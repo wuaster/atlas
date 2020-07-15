@@ -69,3 +69,5 @@ pubspec.lock
 # BACKEND
 /backend/.env
 /backend/node_modules/
+
+ngrok

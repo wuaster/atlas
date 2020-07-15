@@ -26,17 +26,26 @@ class _ChatState extends State<Chat> {
       text: "Hi, how can I help you today?",
       user: ChatUser(name: "Watson"),
       createdAt: DateTime.now(),
-    ),
-    ChatMessage(
-      text: "Here are some of the things you can ask from me:",
-      user: ChatUser(name: "Watson"),
-      createdAt: DateTime.now(),
-    ),
-    ChatMessage(
-      text:
-          '- Add a trip\n- How much money have I saved?\n- What is my carbon footprint?',
-      user: ChatUser(name: "Watson"),
-      createdAt: DateTime.now(),
+      quickReplies: QuickReplies(
+        values: <Reply>[
+          Reply(
+            title: "Add a trip",
+            value: "Add a trip",
+          ),
+          Reply(
+            title: "Record my trip",
+            value: "Record my trip",
+          ),
+          Reply(
+            title: "Money saved?",
+            value: "How much money have I saved?",
+          ),
+          Reply(
+            title: "Footprint?",
+            value: "What's my carbon footprint?",
+          ),
+        ],
+      ),
     ),
   ];
 
@@ -44,12 +53,42 @@ class _ChatState extends State<Chat> {
     setState(() {
       messages = [...messages, message];
     });
-    var res = await http.post("$API_BASE/message", body: {
-      "sessionId": sessionId,
-      "text": message.text,
-      "user": user.uid,
-      "date": message.createdAt.toString()
+    var res = await http.post(
+      "$API_BASE/message",
+      body: {
+        "sessionId": sessionId,
+        "text": message.text,
+        "user": user.uid,
+        "date": message.createdAt.toString()
+      },
+    );
+    setState(() {
+      messages = [
+        ...messages,
+        ChatMessage(text: res.body, user: watson, createdAt: DateTime.now())
+      ];
     });
+  }
+
+  void onQuickReply(Reply reply, String sessionId) async {
+    setState(() {
+      messages.add(
+        ChatMessage(
+          text: reply.value,
+          createdAt: DateTime.now(),
+          user: user,
+        ),
+      );
+    });
+    var res = await http.post(
+      "$API_BASE/message",
+      body: {
+        "sessionId": sessionId,
+        "text": reply.value,
+        "user": user.uid,
+        "date": DateTime.now().toString()
+      },
+    );
     setState(() {
       messages = [
         ...messages,
@@ -73,6 +112,15 @@ class _ChatState extends State<Chat> {
       onSend: (ChatMessage message) {
         onSend(message, sessionId);
       },
+      quickReplyScroll: true,
+      quickReplyStyle: BoxDecoration(
+        color: Colors.blueAccent,
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
+      onQuickReply: (Reply reply) {
+        onQuickReply(reply, sessionId);
+      },
+      quickReplyTextStyle: TextStyle(color: Colors.white),
       messages: messages,
       user: user,
     );
