@@ -23,6 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flip_card:
 
   dash_chat: ^1.1.13
   provider: ^4.3.1
