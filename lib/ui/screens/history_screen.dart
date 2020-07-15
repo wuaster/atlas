@@ -13,6 +13,10 @@ class HistoryScreen extends StatelessWidget {
               "Your Trips",
               style: Theme.of(context).textTheme.headline5,
             ),
+            Text(
+              "Yesterday",
+              style: Theme.of(context).textTheme.subtitle1,
+            ),
             TripCard(
               name: "Walmart",
               amount: 1.17,
