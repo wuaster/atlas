@@ -29,12 +29,16 @@ class _ChatState extends State<Chat> {
       quickReplies: QuickReplies(
         values: <Reply>[
           Reply(
-            title: "Add a trip",
+            title: "Add trip",
             value: "Add a trip",
           ),
           Reply(
-            title: "Record my trip",
+            title: "Record trip",
             value: "Record my trip",
+          ),
+          Reply(
+            title: "Donate",
+            value: "How can I donate?",
           ),
           Reply(
             title: "Money saved?",
