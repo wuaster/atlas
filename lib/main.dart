@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:atlas/ui/screens/chat_screen.dart';
 import 'package:atlas/ui/screens/dashboard_screen.dart';
+import 'package:atlas/ui/screens/history_screen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -47,10 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static final List<Widget> _widgetOptions = <Widget>[
     DashboardScreen(),
     ChatScreen(),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    HistoryScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -73,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
-        showUnselectedLabels: false,  
+        showUnselectedLabels: false,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
