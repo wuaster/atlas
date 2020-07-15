@@ -1,8 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:atlas/ui/screens/chat_screen.dart';
 import 'package:atlas/ui/screens/dashboard_screen.dart';
-void main() {
-  runApp(MyApp());
+import 'package:atlas/ui/screens/history_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:atlas/providers/session_provider.dart';
+
+import 'package:atlas/globals.dart';
+import 'package:http/http.dart' as http;
+
+void main() async {
+  var res = await http.get("$API_BASE/session");
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => Session(res.body),
+          lazy: false,
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -10,13 +28,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Atlas',
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xffF6F6F6),
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Atlas Home Page'),
     );
   }
 }
@@ -47,10 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static final List<Widget> _widgetOptions = <Widget>[
     DashboardScreen(),
     ChatScreen(),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    HistoryScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -68,24 +83,26 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      body: SafeArea(
+        child: Center(
+          child: _widgetOptions.elementAt(_selectedIndex),
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
-        showUnselectedLabels: false,  
+        showUnselectedLabels: false,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            title: Text('Home'),
+            title: Text('Dashboard'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat_bubble_outline),
-            title: Text('Business'),
+            title: Text('Chat'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('School'),
+            icon: Icon(Icons.map),
+            title: Text('Map'),
           ),
         ],
         currentIndex: _selectedIndex,
