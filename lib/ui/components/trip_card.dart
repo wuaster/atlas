@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:atlas/ui/screens/trip_screen.dart';
 
 class TripCard extends StatelessWidget {
   final String name;
@@ -17,7 +18,7 @@ class TripCard extends StatelessWidget {
               child: Image(image: AssetImage('assets/graphics/map.png')),
             ),
             Container(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.all(12),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +44,18 @@ class TripCard extends StatelessWidget {
                             .copyWith(color: Colors.grey),
                       ),
                       FlatButton(
-                        onPressed: null,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TripScreen(
+                                name: name,
+                                amount: amount,
+                                distance: distance,
+                              ),
+                            ),
+                          );
+                        },
                         child: Row(
                           children: <Widget>[
                             Text(
