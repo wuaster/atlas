@@ -23,14 +23,27 @@ class _ChatState extends State<Chat> {
 
   List<ChatMessage> messages = [
     ChatMessage(
-      text: "Hello World, this message will be from Watson in due time.",
+      text: "Hi, how can I help you today?",
       user: ChatUser(name: "Watson"),
       createdAt: DateTime.now(),
-    )
+    ),
+    ChatMessage(
+      text: "Here are some of the things you can ask from me:",
+      user: ChatUser(name: "Watson"),
+      createdAt: DateTime.now(),
+    ),
+    ChatMessage(
+      text:
+          '- Add a trip\n- How much money have I saved?\n- What is my carbon footprint?',
+      user: ChatUser(name: "Watson"),
+      createdAt: DateTime.now(),
+    ),
   ];
 
   void onSend(ChatMessage message, String sessionId) async {
-    messages.add(message);
+    setState(() {
+      messages = [...messages, message];
+    });
     var res = await http.post("$API_BASE/message", body: {
       "sessionId": sessionId,
       "text": message.text,
@@ -38,9 +51,10 @@ class _ChatState extends State<Chat> {
       "date": message.createdAt.toString()
     });
     setState(() {
-      messages.add(
-        ChatMessage(text: res.body, user: watson, createdAt: DateTime.now()),
-      );
+      messages = [
+        ...messages,
+        ChatMessage(text: res.body, user: watson, createdAt: DateTime.now())
+      ];
     });
   }
 
@@ -52,7 +66,7 @@ class _ChatState extends State<Chat> {
       sendOnEnter: true,
       textInputAction: TextInputAction.send,
       dateFormat: DateFormat('yyyy MMM dd'),
-      scrollToBottom: true,
+      scrollToBottom: false,
       inputDecoration:
           InputDecoration.collapsed(hintText: "Add message here..."),
       messagePadding: EdgeInsets.all(10),
