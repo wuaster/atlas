@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:atlas/ui/screens/chat_screen.dart';
+import 'package:atlas/ui/screens/history_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -50,10 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       style: optionStyle,
     ),
     ChatScreen(),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    HistoryScreen(),
   ];
 
   void _onItemTapped(int index) {
