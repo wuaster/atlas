@@ -117,7 +117,7 @@ class _ChatState extends State<Chat> {
     Map<String, dynamic> body = jsonDecode(res);
     if (body["money_saved"] == true) {
       double money = await _getMoney();
-      return ("You've saved \$" + money.toString() + " 💵");
+      return ("You've saved \$" + money.toStringAsFixed(2) + " 💵");
     } else if (body["carbon_footprint"] == true) {
       int emission = await _getEmissions();
       return ("You've prevented $emission KG of CO2 from entering the atmosphere 🌤!");
