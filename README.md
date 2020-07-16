@@ -35,10 +35,8 @@ CarbonCash is built using:
 # Development
 
 
-- Chatbot manual trip input	## App
-- Record your trip	Make sure you have [Flutter](https://flutter.dev/docs/get-started/install/macos) installed (we used `1.17`) as well as XCode from the Mac App Store.
-- Blockchain leaderboard/stats aggregation	
-- Links to relevant organizations to donate to	
+## App
+Make sure you have [Flutter](https://flutter.dev/docs/get-started/install/macos) installed (we used `1.17`) as well as XCode from the Mac App Store.
 
 Ensure the `API_BASE` in `globals.dart` points to your backend server.
 
@@ -47,12 +45,25 @@ Don't forget to run `flutter pub get`
 Following the guide above should get you up and running.
 
 
-## Backend	## Backend
-
-
-@@ -49,4 +51,4 @@ Or run in production (NOTE: `.env` variables will not be loaded)
-
-
-```bash	```bash
-npm start	npm start
-```	```
+## Backend
+To run the backend server:
+- Navigate to the backend directory:
+```bash
+cd backend
+```
+- Create a `.env` file based on the `.env.example`
+```bash
+touch .env && cat .env.example > .env
+```
+Install dependencies:
+```bash
+npm install
+```
+Run in development (default port 3000, but you can specify in your `.env` file)
+```bash
+npm run dev
+```
+Or run in production (NOTE: `.env` variables will not be loaded)
+```bash
+npm start
+```
