@@ -1,4 +1,4 @@
-# atlas
+# CarbonCash (2020 IBM NA Intern Hackathon - Team ATLAS)
 
 Built using:
 
