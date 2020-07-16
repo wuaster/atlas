@@ -45,6 +45,13 @@ class _ChatState extends State<Chat> {
     await _tripService.saveMoney(money);
     await _tripService.saveDistance(distance);
   }
+  Future<double> _getMoney() async {
+    return await _moneyService.getMoney();
+  }
+
+  Future<int> _getEmissions() async {
+    return await _emissionService.getEmissions();
+  }
 
   final ChatUser user = ChatUser(
     name: "Me",
@@ -55,45 +62,43 @@ class _ChatState extends State<Chat> {
     uid: "1",
   );
 
+  static final List<Reply> replies = <Reply>[
+    Reply(
+      title: "Add trip 📍",
+      value: "Add a trip",
+    ),
+    Reply(
+      title: "Record trip 🏁",
+      value: "Record my trip",
+    ),
+    Reply(
+      title: "Donate 🤩",
+      value: "How can I donate?",
+    ),
+    Reply(
+      title: "Saved 💰?",
+      value: "How much money have I saved?",
+    ),
+    Reply(
+      title: "Carbon 🦶?",
+      value: "What's my carbon footprint?",
+    ),
+  ];
+
   List<ChatMessage> messages = [
     ChatMessage(
       text: "Hi, Watson here, how can I help you today?",
       user: ChatUser(name: "Watson"),
       createdAt: DateTime.now(),
       quickReplies: QuickReplies(
-        values: <Reply>[
-          Reply(
-            title: "Add trip 📍",
-            value: "Add a trip",
-          ),
-          Reply(
-            title: "Record trip 🏁",
-            value: "Record my trip",
-          ),
-          Reply(
-            title: "Donate 🤩",
-            value: "How can I donate?",
-          ),
-          Reply(
-            title: "Saved 💰?",
-            value: "How much money have I saved?",
-          ),
-          Reply(
-            title: "Carbon 🦶?",
-            value: "What's my carbon footprint?",
-          ),
-        ],
+        values: replies,
       ),
     ),
   ];
 
-  String prepareJSON(String res) {
-    Map<String, dynamic> body = jsonDecode(res);
-    print(body);
+  String doTrip(Map<String, dynamic> body) {
     double money = body['dollars'];
     double distance = body['distance'];
-    // int efficiency = (body['efficiency'] * 100).round();
-    double price = body['price'];
     int emission = body['emission'].round();
     String return_message = "Congratulations! You saved \$" +
         money.toString() +
@@ -106,6 +111,21 @@ class _ChatState extends State<Chat> {
     _addEmissions(emission);
     _addTrip(emission, money, distance);
     return (return_message);
+  }
+
+  Future<String> prepareJSON(String res) async {
+    Map<String, dynamic> body = jsonDecode(res);
+    if (body["money_saved"] == true) {
+      double money = await _getMoney();
+      return ("You've saved \$" + money.toString() + " 💵");
+    } else if (body["carbon_footprint"] == true) {
+      int emission = await _getEmissions();
+      return ("You've prevented $emission KG of CO2 from entering the atmosphere 🌤!");
+    } else if (body["donate"] == true) {
+      return ("You can check out our links to curated organizations in your trips 🙌");
+    } else {
+      return doTrip(body);
+    }
   }
 
   void onSend(ChatMessage message, String sessionId) async {
@@ -122,14 +142,20 @@ class _ChatState extends State<Chat> {
       },
     );
     String result = res.body;
-    if (res.body[0] == '{' && res.body[res.body.length - 1] == '}') {
-      result = prepareJSON(res.body);
+    bool isData = res.body[0] == '{' && res.body[res.body.length - 1] == '}';
+    if (isData) {
+      result = await prepareJSON(res.body);
     }
 
     setState(() {
       messages = [
         ...messages,
-        ChatMessage(text: result, user: watson, createdAt: DateTime.now())
+        ChatMessage(
+          text: result,
+          user: watson,
+          createdAt: DateTime.now(),
+          quickReplies: isData ? QuickReplies(values: replies) : null,
+        ),
       ];
     });
   }
@@ -153,10 +179,19 @@ class _ChatState extends State<Chat> {
         "date": DateTime.now().toString()
       },
     );
+    String result = res.body;
+    bool isData = res.body[0] == '{' && res.body[res.body.length - 1] == '}';
+    if (isData) {
+      result = await prepareJSON(res.body);
+    }
     setState(() {
       messages = [
         ...messages,
-        ChatMessage(text: res.body, user: watson, createdAt: DateTime.now())
+        ChatMessage(
+            text: result,
+            user: watson,
+            createdAt: DateTime.now(),
+            quickReplies: isData ? QuickReplies(values: replies) : null),
       ];
     });
   }
