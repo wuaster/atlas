@@ -78,7 +78,7 @@ app.post("/message", async (req, res) => {
   if (!msgObj.text) return res.send("Invalid 'text' field.");
   if (!msgObj.user) return res.send("Invalid 'user' field.");
   if (!msgObj.date) return res.send("Invalid 'date' field.");
-
+  console.log({ msgObj });
   var result = "";
   // STATEFUL
   try {
@@ -220,8 +220,15 @@ async function getEconomyFromDestination(start_address, end_address) {
   const lengthInKm = routeLength / 1000.0;
   const totalDollars = gasMilage * lengthInKm * gasPricePerLiter;
   const roundedTotal = Math.round((totalDollars + Number.EPSILON) * 100) / 100;
+  const fuelBurned = lengthInKm * 2.4;
   // return `Cost: ${roundedTotal} CAD. Distance traveled: ${Math.round((lengthInKm + Number.EPSILON) * 100) / 100}km`;
-  return { dollars: roundedTotal };
+  return {
+    dollars: roundedTotal,
+    distance: lengthInKm,
+    efficieny: gasMilage,
+    price: gasPricePerLiter,
+    emission: fuelBurned,
+  };
 }
 
 // endpoint called by the watson assistant via webhooks

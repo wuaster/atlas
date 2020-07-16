@@ -12,6 +12,12 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<Session>().getSessionId();
+  }
+
   final ChatUser user = ChatUser(
     name: "Me",
     uid: "2",
@@ -23,29 +29,29 @@ class _ChatState extends State<Chat> {
 
   List<ChatMessage> messages = [
     ChatMessage(
-      text: "Hi, how can I help you today?",
+      text: "Hi, Watson here, how can I help you today?",
       user: ChatUser(name: "Watson"),
       createdAt: DateTime.now(),
       quickReplies: QuickReplies(
         values: <Reply>[
           Reply(
-            title: "Add trip",
+            title: "Add trip 📍",
             value: "Add a trip",
           ),
           Reply(
-            title: "Record trip",
+            title: "Record trip 🏁",
             value: "Record my trip",
           ),
           Reply(
-            title: "Donate",
+            title: "Donate 🤩",
             value: "How can I donate?",
           ),
           Reply(
-            title: "Money saved?",
+            title: "Saved 💰?",
             value: "How much money have I saved?",
           ),
           Reply(
-            title: "Footprint?",
+            title: "Carbon 🦶?",
             value: "What's my carbon footprint?",
           ),
         ],
@@ -119,7 +125,7 @@ class _ChatState extends State<Chat> {
       quickReplyScroll: true,
       quickReplyStyle: BoxDecoration(
         color: Colors.blueAccent,
-        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderRadius: BorderRadius.all(Radius.circular(4)),
       ),
       onQuickReply: (Reply reply) {
         onQuickReply(reply, sessionId);
