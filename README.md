@@ -40,8 +40,7 @@ CarbonCash is built using:
 - Blockchain leaderboard/stats aggregation	
 - Links to relevant organizations to donate to	
 
-
-# Development	Ensure the `API_BASE` in `globals.dart` points to your backend server.
+Ensure the `API_BASE` in `globals.dart` points to your backend server.
 
 Don't forget to run `flutter pub get`
 
