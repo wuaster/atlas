@@ -21,8 +21,13 @@ CarbonCash is built using:
 - Watson Assistant
 
 ## Next Steps
-Add payment processing in-app so users can simply ask the CarbonCash chatbot “Please donate my savings to X” or “donate 50% of my savings on this trip”
-Allow users to specify the mode of transportation (bike, carpool etc..) as well as gas milage, price per liter.
-Add a feature to record your trips in real time and provide some award to verify your impact and make it more meaningful. Could even add these real time trips to blockchain and possibly even award “carbon crypto” for these verified trips.
-Make Watson even smarter and be able to plan trips for optimal emissions.
-Enable watson to recommend charities based on user preferences and trip geography.
+
+- Add payment processing in-app so users can simply ask the CarbonCash chatbot “Please donate my savings to X” or “donate 50% of my savings on this trip”
+
+- Allow users to specify the mode of transportation (bike, carpool etc..) as well as gas milage, price per liter.
+
+- Add a feature to record your trips in real time and provide some award to verify your impact and make it more meaningful. Could even add these real time trips to blockchain and possibly even award “carbon crypto” for these verified trips.
+
+- Make Watson even smarter and be able to plan trips for optimal emissions.
+
+- Enable watson to recommend charities based on user preferences and trip geography.
