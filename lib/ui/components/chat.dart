@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:atlas/controllers/localstorage.dart';
 import 'package:atlas/controllers/moneyservice.dart';
 import 'package:atlas/controllers/emissionservice.dart';
+import 'package:atlas/controllers/tripservice.dart';
 
 class Chat extends StatefulWidget {
   @override
@@ -18,15 +19,17 @@ class Chat extends StatefulWidget {
 class _ChatState extends State<Chat> {
   MoneyService _moneyService;
   EmissionService _emissionService;
-
+  TripService _tripService;
   @override
   void initState() {
     super.initState();
     context.read<Session>().getSessionId();
     _moneyService = MoneyService(
-        localStorageRepository: LocalStorageRepository("money.json"));
+      localStorageRepository: LocalStorageRepository("money.json"));
     _emissionService = EmissionService(
-        localStorageRepository: LocalStorageRepository("emissions.json"));
+      localStorageRepository: LocalStorageRepository("emissions.json"));
+    _tripService = TripService(
+      localStorageRepository: LocalStorageRepository("trip.json"));
   }
 
   Future<void> _addMoney(double money) async {
@@ -35,6 +38,12 @@ class _ChatState extends State<Chat> {
 
   Future<void> _addEmissions(int emissions) async {
     final int _newEmissions = await _emissionService.saveEmissions(emissions);
+  }
+
+  Future<void> _addTrip(int emission, double money, double distance) async {
+    await _tripService.saveEmissions(emission);
+    await _tripService.saveMoney(money);
+    await _tripService.saveDistance(distance);
   }
 
   final ChatUser user = ChatUser(
@@ -95,6 +104,7 @@ class _ChatState extends State<Chat> {
         "km between the two locations, I assumed an efficiency of 11L/100km and a gas price of \$0.9/L.";
     _addMoney(money);
     _addEmissions(emission);
+    _addTrip(emission, money, distance);
     return (return_message);
   }
 
