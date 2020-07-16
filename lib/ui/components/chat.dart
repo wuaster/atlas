@@ -26,15 +26,17 @@ class _ChatState extends State<Chat> {
     _moneyService = MoneyService(
         localStorageRepository: LocalStorageRepository("money.json"));
     _emissionService = EmissionService(
-      localStorageRepository: LocalStorageRepository("emissions.json"));
+        localStorageRepository: LocalStorageRepository("emissions.json"));
   }
+
   Future<void> _addMoney(double money) async {
     final double _newMoney = await _moneyService.saveMoney(money);
   }
+
   Future<void> _addEmissions(int emissions) async {
     final int _newEmissions = await _emissionService.saveEmissions(emissions);
   }
-  
+
   final ChatUser user = ChatUser(
     name: "Me",
     uid: "2",
@@ -43,7 +45,6 @@ class _ChatState extends State<Chat> {
     name: "Watson",
     uid: "1",
   );
-  
 
   List<ChatMessage> messages = [
     ChatMessage(
@@ -79,15 +80,22 @@ class _ChatState extends State<Chat> {
 
   String prepareJSON(String res) {
     Map<String, dynamic> body = jsonDecode(res);
+    print(body);
     double money = body['dollars'];
     double distance = body['distance'];
-    int efficiency = (body['efficiency']*100).round();
+    // int efficiency = (body['efficiency'] * 100).round();
     double price = body['price'];
     int emission = body['emission'].round();
-    String return_message = "Congratulations! You saved \$"+ money.toString() +" by not driving! 🎉 \n\nThat’s "+ emission.toString() +" kg of CO2 saved from entering the atmosphere!\n\nWith a distance of "+ distance.toString() +"km between the two locations, I assumed an efficiency of 11L/100km and a gas price of \$0.9/L.";
+    String return_message = "Congratulations! You saved \$" +
+        money.toString() +
+        " by not driving! 🎉 \n\nThat’s " +
+        emission.toString() +
+        " kg of CO2 saved from entering the atmosphere!\n\nWith a distance of " +
+        distance.toString() +
+        "km between the two locations, I assumed an efficiency of 11L/100km and a gas price of \$0.9/L.";
     _addMoney(money);
     _addEmissions(emission);
-    return(return_message);
+    return (return_message);
   }
 
   void onSend(ChatMessage message, String sessionId) async {
@@ -104,10 +112,10 @@ class _ChatState extends State<Chat> {
       },
     );
     String result = res.body;
-    if (res.body[0] =='{' && res.body[res.body.length-1] == '}'){
+    if (res.body[0] == '{' && res.body[res.body.length - 1] == '}') {
       result = prepareJSON(res.body);
     }
-    
+
     setState(() {
       messages = [
         ...messages,
