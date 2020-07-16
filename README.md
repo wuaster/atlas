@@ -31,3 +31,29 @@ CarbonCash is built using:
 - Make Watson even smarter and be able to plan trips for optimal emissions.
 
 - Enable watson to recommend charities based on user preferences and trip geography.
+
+# Development
+
+
+- Chatbot manual trip input	## App
+- Record your trip	Make sure you have [Flutter](https://flutter.dev/docs/get-started/install/macos) installed (we used `1.17`) as well as XCode from the Mac App Store.
+- Blockchain leaderboard/stats aggregation	
+- Links to relevant organizations to donate to	
+
+
+# Development	Ensure the `API_BASE` in `globals.dart` points to your backend server.
+
+Don't forget to run `flutter pub get`
+
+Following the guide above should get you up and running.
+
+
+## Backend	## Backend
+
+
+@@ -49,4 +51,4 @@ Or run in production (NOTE: `.env` variables will not be loaded)
+
+
+```bash	```bash
+npm start	npm start
+```	```
