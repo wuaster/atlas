@@ -1,7 +1,46 @@
 import 'package:flutter/material.dart';
 import '../components/card.dart';
+import 'package:atlas/controllers/localstorage.dart';
+import 'package:atlas/controllers/moneyservice.dart';
+import 'package:atlas/controllers/emissionservice.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends StatefulWidget {
+ @override
+  _DashboardScreenState createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  double _money;
+  int _emissions;
+  MoneyService _moneyService;
+  EmissionService _emissionService;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _money = 0;
+    _moneyService = MoneyService(
+        localStorageRepository: LocalStorageRepository("money.json"));
+    _emissions = 0;
+    _emissionService = EmissionService(
+        localStorageRepository: LocalStorageRepository("emissions.json"));
+  }
+
+  Future<void> _getMoney() async {
+    final double _newMoney = await _moneyService.getMoney();
+
+    setState(() {
+      _money = _newMoney;
+    });
+  }
+  Future<void> _getEmissions() async {
+    final int _newEmissions = await _emissionService.getEmissions();
+
+    setState(() {
+      _emissions = _newEmissions;
+    });
+  }
  @override
  Widget build(BuildContext context) {
    return Scaffold(
@@ -42,25 +81,61 @@ class DashboardScreen extends StatelessWidget {
                           mainAxisSpacing: 10,
                           crossAxisCount: 2,
                           children: <Widget>[
-                            PCard(
-                              front: 'Today',
-                              back: '\$',
-                              color: Color(0xFFB2DFDB)
+                            FutureBuilder<double>(
+                              future: _moneyService.getMoney(),
+                              builder: (BuildContext context, AsyncSnapshot<double> snapshot) {
+                                if (snapshot.hasData) {
+                                  _money = snapshot.data;
+                                  return PCard(
+                                          front: 'Today',
+                                          back:'\$' + _money.toString(),
+                                          color: Color(0xFFB2DFDB)
+                                        );
+                                }
+                                return CircularProgressIndicator();
+                              },
                             ),
-                            PCard(
-                              front: 'This Week',
-                              back: '\$\$',
-                              color: Color(0xFF80CBC4)
+                            FutureBuilder<double>(
+                              future: _moneyService.getMoney(),
+                              builder: (BuildContext context, AsyncSnapshot<double> snapshot) {
+                                if (snapshot.hasData) {
+                                  _money = snapshot.data;
+                                  return PCard(
+                                          front: 'This Week',
+                                          back: '\$' + _money.toString(),
+                                          color: Color(0xFF80CBC4)
+                                        );
+                                }
+                                return CircularProgressIndicator();
+                              },
                             ),
-                            PCard(
-                              front: 'This Month',
-                              back: '\$\$',
-                              color: Color(0xFF4DB6AC)
+                            FutureBuilder<double>(
+                              future: _moneyService.getMoney(),
+                              builder: (BuildContext context, AsyncSnapshot<double> snapshot) {
+                                if (snapshot.hasData) {
+                                  _money = snapshot.data;
+                                  return  PCard(
+                                            front: 'This Month',
+                                            back: '\$' + _money.toString(),
+                                            color: Color(0xFF4DB6AC)
+                                          );
+                                }
+                                return CircularProgressIndicator();
+                              },
                             ),
-                            PCard(
-                              front: 'This Year',
-                              back: '\$\$',
-                              color: Color(0xFF26A69A)
+                            FutureBuilder<double>(
+                              future: _moneyService.getMoney(),
+                              builder: (BuildContext context, AsyncSnapshot<double> snapshot) {
+                                if (snapshot.hasData) {
+                                  _money = snapshot.data;
+                                  return  PCard(
+                                            front: 'This Year',
+                                            back: '\$' + _money.toString(),
+                                            color: Color(0xFF26A69A)
+                                          );
+                                }
+                                return CircularProgressIndicator();
+                              },
                             ),
                           ],
                         ),
@@ -87,26 +162,62 @@ class DashboardScreen extends StatelessWidget {
                           mainAxisSpacing: 10,
                           crossAxisCount: 2,
                           children: <Widget>[
-                            PCard(
-                              front: 'Today',
-                              back: '\$',
-                              color: Color(0xFFCFD8DC)
+                            FutureBuilder<int>(
+                              future: _emissionService.getEmissions(),
+                              builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+                                if (snapshot.hasData) {
+                                  _emissions = snapshot.data;
+                                  return PCard(
+                                          front: 'Today',
+                                          back: _emissions.toString() + " kg",
+                                          color: Color(0xFFCFD8DC)
+                                        );
+                                }
+                                return CircularProgressIndicator();
+                              },
                             ),
-                            PCard(
-                              front: 'This Week',
-                              back: '\$\$',
-                              color: Color(0xFFB0BEC5)
+                            FutureBuilder<int>(
+                              future: _emissionService.getEmissions(),
+                              builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+                                if (snapshot.hasData) {
+                                  _emissions = snapshot.data;
+                                  return PCard(
+                                          front: 'This Week',
+                                          back: _emissions.toString() + " kg",
+                                          color: Color(0xFFB0BEC5)
+                                        );
+                                }
+                                return CircularProgressIndicator();
+                              },
                             ),
-                            PCard(
-                              front: 'This Month',
-                              back: '\$\$',
-                              color: Color(0xFF90A4AE)
+                            FutureBuilder<int>(
+                              future: _emissionService.getEmissions(),
+                              builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+                                if (snapshot.hasData) {
+                                  _emissions = snapshot.data;
+                                  return PCard(
+                                          front: 'This Month',
+                                          back: _emissions.toString() + " kg",
+                                          color: Color(0xFF90A4AE)
+                                        );
+                                }
+                                return CircularProgressIndicator();
+                              },
                             ),
-                            PCard(
-                              front: 'This Year',
-                              back: '\$\$',
-                              color: Color(0xFF78909C)
-                            ),
+                            FutureBuilder<int>(
+                              future: _emissionService.getEmissions(),
+                              builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+                                if (snapshot.hasData) {
+                                  _emissions = snapshot.data;
+                                  return PCard(
+                                          front: 'This Year',
+                                          back: _emissions.toString() + " kg",
+                                          color: Color(0xFF78909C)
+                                        );
+                                }
+                                return CircularProgressIndicator();
+                              },
+                            ),       
                           ],
                         ),
                       ],

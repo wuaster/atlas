@@ -1,7 +1,7 @@
 import 'package:localstorage/localstorage.dart';
-import 'package:atlas/localstorage.dart';
+import 'package:atlas/controllers/localstorage.dart';
 
-class LocalStorageRepository implements ILocalStorageRepository {
+class LocalStorageRepository {
   final LocalStorage _storage;
 
   LocalStorageRepository(String storageKey)

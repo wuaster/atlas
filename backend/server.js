@@ -225,7 +225,7 @@ async function getEconomyFromDestination(start_address, end_address) {
   return {
     dollars: roundedTotal,
     distance: lengthInKm,
-    efficieny: gasMilage,
+    efficiency: gasMilage,
     price: gasPricePerLiter,
     emission: fuelBurned,
   };
