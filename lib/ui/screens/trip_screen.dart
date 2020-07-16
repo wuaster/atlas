@@ -3,9 +3,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 class TripScreen extends StatelessWidget {
   final String name;
+  final int emission;
   final double amount;
   final double distance;
-  TripScreen({this.name, this.amount, this.distance});
+  TripScreen({this.name, this.emission, this.amount, this.distance});
 
   Widget stat(text, icon, color) {
     return Padding(
@@ -97,7 +98,7 @@ class TripScreen extends StatelessWidget {
                           style: Theme.of(context).textTheme.headline5,
                         ),
                         stat(
-                          "7 kg CO2",
+                          "$emission CO2",
                           Icons.local_gas_station,
                           Colors.blue,
                         ),

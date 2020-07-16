@@ -5,8 +5,6 @@ import 'package:atlas/controllers/localstorage.dart';
 class MoneyService {
   final LocalStorageService _localStorageService;
   final String _moneyKey = "money";
-  final String _emissionsKey = "emissions";
-  final String _distanceKey = "distance";
 
   MoneyService({
     @required LocalStorageRepository localStorageRepository,

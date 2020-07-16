@@ -15,8 +15,6 @@ class EmissionService {
   }
 
   Future<int> saveEmissions(int emissions) async {
-    int _newEmissions = await getEmissions();
-    emissions += _newEmissions;
     await _localStorageService.save(_emissionsKey, emissions);
   }
 }

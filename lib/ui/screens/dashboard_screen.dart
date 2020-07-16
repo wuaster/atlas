@@ -89,7 +89,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           _money = snapshot.data;
                           return PCard(
                               front: 'Today',
-                              back: '\$' + _money.toString(),
+                              back: '\$' + _money.toStringAsFixed(2),
                               color: Color(0xFFB2DFDB));
                         }
                         return CircularProgressIndicator();
@@ -103,7 +103,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           _money = snapshot.data;
                           return PCard(
                               front: 'This Week',
-                              back: '\$' + _money.toString(),
+                              back: '\$' + _money.toStringAsFixed(2),
                               color: Color(0xFF80CBC4));
                         }
                         return CircularProgressIndicator();
@@ -117,7 +117,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           _money = snapshot.data;
                           return PCard(
                               front: 'This Month',
-                              back: '\$' + _money.toString(),
+                              back: '\$' + _money.toStringAsFixed(2),
                               color: Color(0xFF4DB6AC));
                         }
                         return CircularProgressIndicator();
@@ -131,7 +131,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           _money = snapshot.data;
                           return PCard(
                               front: 'This Year',
-                              back: '\$' + _money.toString(),
+                              back: '\$' + _money.toStringAsFixed(2),
                               color: Color(0xFF26A69A));
                         }
                         return CircularProgressIndicator();

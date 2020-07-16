@@ -3,9 +3,10 @@ import 'package:atlas/ui/screens/trip_screen.dart';
 
 class TripCard extends StatelessWidget {
   final String name;
+  final int emission;
   final double amount;
   final double distance;
-  TripCard({this.name, this.amount, this.distance});
+  TripCard({this.name, this.emission, this.amount, this.distance});
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +54,7 @@ class TripCard extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) => TripScreen(
                                   name: name,
+                                  emission: emission,
                                   amount: amount,
                                   distance: distance,
                                 ),

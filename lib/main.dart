@@ -24,13 +24,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Atlas',
+      title: 'Carbon Cash',
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xffF6F6F6),
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Atlas Home Page'),
+      home: MyHomePage(title: 'Carbon Cash Home Page'),
     );
   }
 }
