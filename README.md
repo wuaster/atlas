@@ -69,12 +69,12 @@ npm start
 ```
 ## Env variables
 ```
-PORT=3000
-WATSON_VERSION=2020-04-01
-WATSON_API_KEY=iqKVYeF-Gc5NiXL2pG2f2IskIPLPuil53NrHOJatvmqX
-WATSON_URL=https://api.us-south.assistant.watson.cloud.ibm.com/instances/c0455ec0-6aee-49bc-b497-25e9bedbfd52
-WATSON_ASSISTANT_ID=958f047b-1d54-463e-b7b3-d52fa5f836a3
-HERE_API_KEY=bJr6Jvpiiqg5eduryzflzJqmi5iLA7Px_qxyHrISRGg
-HERE_GEOCODE_ENDPOINT=https://geocode.search.hereapi.com/v1/geocode
-HERE_ROUTES_ENDPOINT=https://router.hereapi.com/v8/routes
+PORT=
+WATSON_VERSION=
+WATSON_API_KEY=
+WATSON_URL=
+WATSON_ASSISTANT_ID=
+HERE_API_KEY=
+HERE_GEOCODE_ENDPOINT=
+HERE_ROUTES_ENDPOINT=
 ```
